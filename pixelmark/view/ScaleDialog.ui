@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ScaleDialog</class>
+ <widget class="QDialog" name="ScaleDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>380</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>比例尺标定</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="tipLabel">
+     <property name="text">
+      <string>请填写刚画出的线段对应的实际长度。标定后所有测量结果将同时显示像素值与实际值。</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>标定参数</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_px">
+        <property name="text">
+         <string>线段像素长度</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="measuredPxLabel">
+        <property name="text">
+         <string>0 px</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_real">
+        <property name="text">
+         <string>实际长度</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="realLenSpin">
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="minimum">
+         <double>0.0001</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.0000</double>
+        </property>
+        <property name="value">
+         <double>10.0000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_unit">
+        <property name="text">
+         <string>单位</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <layout class="QHBoxLayout" name="hbox_unit">
+        <item>
+         <widget class="QComboBox" name="unitCombo">
+          <property name="toolTip">
+           <string>选择常用单位，也可直接输入自定义单位</string>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>mm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>cm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>m</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>μm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>in</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="unitHintLabel">
+          <property name="text">
+           <string>可自定义</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:#999; font-size:11px;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="previewLabel">
+        <property name="text">
+         <string>1 px = 0.1000 mm</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#0B8043; font-weight:bold;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="hintLabel">
+     <property name="text">
+      <string>提示：选择图像上已知长度的对象（如标尺、比例块）画一条线，输入其真实长度即可完成标定。</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:#666;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ScaleDialog</receiver>
+   <slot>accept()</slot>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ScaleDialog</receiver>
+   <slot>reject()</slot>
+  </connection>
+ </connections>
+</ui>

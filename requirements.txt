@@ -1,0 +1,22 @@
+# PixelMark 像素标绘 —— 依赖清单
+#
+# 安装：pip install -r requirements.txt
+#
+# 说明：
+#   PyQt5 为必需；numpy 为必需（图像向量化运算）。
+#   OpenCV 为「摄像头拍照 / 视频截帧」的依赖：缺失时这两项功能不可用
+#   （调用时给出友好提示），其余功能不受影响。
+#   Pillow 为可选增强：缺失时图像滤镜自动回退到 numpy 实现。
+
+PyQt5>=5.15.2
+numpy>=1.19
+
+# ---- OpenCV：摄像头拍照 / 视频截帧所需（可选，缺失时对应功能降级）----
+# 注意：与 PyQt5 同进程使用时推荐 headless 版本，避免两套 Qt 二进制冲突
+# 若使用 opencv-python 出现问题，请改用：
+opencv-python-headless>=4.5 ; extra == 'opencv'
+# 或标准版（会自带一套 Qt 库，体积更大）：
+# opencv-python>=4.5
+
+# ---- 可选增强（缺失时自动降级）----
+Pillow>=8.0
